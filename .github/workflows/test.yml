@@ -7,10 +7,8 @@ jobs:
     name: cargo-run-bin
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
         with:
           cache-directories: ".bin"
@@ -18,7 +16,7 @@ jobs:
       - name: Install deps
         run: |
           cargo install cargo-run-bin --target-dir ./target
-          cargo bin --build
+          cargo bin --install
           cargo cmd setup-nightly
       - name: Lint
         run: cargo cmd lint
