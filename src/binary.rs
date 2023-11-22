@@ -1,7 +1,7 @@
 use std::env;
 use std::fs;
 use std::io;
-use std::os::fd::AsFd;
+use std::os::unix::io::AsFd;
 use std::path;
 use std::process;
 
